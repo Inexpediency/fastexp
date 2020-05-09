@@ -5,6 +5,9 @@ let pass = document.querySelector("#pass");
 let passAgain = document.querySelector("#pass-again");
 let btn = document.querySelector("#submit");
 let auth = document.querySelector("#auth");
+let form = document.querySelector('form')
+
+
 
 auth.onclick = function() {
   window.location = "auth.html";
@@ -35,7 +38,7 @@ btn.onclick = () => {
               '"}',
           }).then((data) => resolve(data.json()));
         });
-        authRequest.then(() => (window.location = "technologyes.html"));
+        authRequest.then(() => (window.location = "themes.html"));
       }
     });
   }

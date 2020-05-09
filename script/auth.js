@@ -13,7 +13,7 @@ btn.onclick = () => {
   });
   authRequest.then(() => {
     if (status === 200) {
-      window.location = "technologyes.html";
+      window.location = "themes.html";
     }
   });
 };
