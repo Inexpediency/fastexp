@@ -21,6 +21,7 @@ class Theme {
             'err': null,
             'title': null,
             'content': null,
+            'id': null,
         };
 
         try {
@@ -29,6 +30,7 @@ class Theme {
                 res = await res.json()
                 theme.title = res.title
                 theme.content = res.content
+                theme.id = res.id
             } else {
                 theme.err = true
             }
