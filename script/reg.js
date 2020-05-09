@@ -6,6 +6,10 @@ let passAgain = document.querySelector("#pass-again");
 let btn = document.querySelector("#submit");
 let auth = document.querySelector("#auth");
 
+auth.onclick = function() {
+  window.location = "auth.html";
+};
+
 btn.onclick = () => {
   if (pass.value === passAgain.value) {
     let regRequest = new Promise((resolve, reject) => {
