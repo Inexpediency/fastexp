@@ -5,10 +5,10 @@ class Theme {
 
     static async get_theme(technology_id) {
         let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append('Content-Type', 'application/json');
         
         let raw = JSON.stringify({
-            "technology_id": technology_id
+            'technology_id': technology_id
         });
 
         let requestOptions = {

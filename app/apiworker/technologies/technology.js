@@ -3,12 +3,12 @@ const server_url = require('../server_url')
 class TechnologyList {
     static get_technology_list_url = '/private/get_technology_list'
 
-    static async get_technology_list(command_id) {
+    static async get_technology_list(user_id) {
         let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append('Content-Type', 'application/json');
         
         let raw = JSON.stringify({
-            "command_id": command_id
+            'user_id': user_id
         });
 
         let requestOptions = {
