@@ -10,7 +10,7 @@ section {
 form {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 60%;
     color: #949494;
     font-size: 18px;
 }
@@ -44,21 +44,18 @@ form input {
 }
 
 button {
-   width: 45%;
    height: 48px;
    border-radius: 5px; 
    outline: none;
    border: none;
    cursor: pointer;
    color: white;
-   background-color: #C9C9C9;
+   background-color: #F87777;
    font-size: 18px;
+   margin: 50px 0 100px 0;
 }
 
 button:hover {
    opacity: 74%;
 }
 
-button:first-child {
-    background-color: #F87777;
-}
