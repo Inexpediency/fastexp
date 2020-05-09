@@ -1,7 +1,11 @@
 const server_url = require('../server_url')
 
 class TagList {
-    async get_command_tags(command_id) {
+
+    static get_command_tags_url = '/private/get_command_tags'
+    static set_person_tags_url ='/private/set_person_tags'
+
+    static async get_command_tags(command_id) {
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         
@@ -21,7 +25,7 @@ class TagList {
         };
 
         try {
-            let res = await fetch(server_url + '/private/get_command_tags', requestOptions)
+            let res = await fetch(server_url + TagList.get_command_tags_url, requestOptions)
             if (res.ok) {
                 res = await res.json()
                 tag_list.tags = res.tags
@@ -36,12 +40,12 @@ class TagList {
         return tag_list
     }
 
-    async set_person_tags(person_id, list_of_tags) {
+    static async set_person_tags(person_id, list_of_tags) {
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         let raw = JSON.stringify({
-            "person_id":person_id,
+            "person_id": person_id,
             "tag_list": list_of_tags
         });
 
@@ -52,14 +56,12 @@ class TagList {
         };
 
         let isOk = true;
-        let res = await fetch(server_url + '/private/set_person_tags', requestOptions)
+        let res = await fetch(server_url + this.set_person_tags_url, requestOptions)
         if (!res.ok)
             isOk = false
 
         return isOk
     }
-
-
 }
 
 module.exports = TagList;
