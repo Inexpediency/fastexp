@@ -1,52 +1,60 @@
-body *, body{
-    margin: 0;
-    padding: 0;
-    font-family: 'Rubik', sans-serif;
+body *,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Rubik", sans-serif;
 }
 
 .container {
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo img {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .profile {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.profile img{
-    margin: 10px;
-    margin-bottom: 20px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+.profile img {
+  margin: 10px 0 20px 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.profile .name {
+  margin: 30px 15px 0 15px;
 }
 
 .profile p {
-    align-self: center;
-    margin-top: 30px;
+  align-self: center;
+  margin-top: 30px;
+}
+
+.profile p:last-child {
+    color: red;
 }
 
 h1 {
-    margin-top: 40px;
-    margin-bottom: 10px;
-    font-size: 40px;
-    color: #383838; 
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-size: 40px;
+  color: #383838;
 }
