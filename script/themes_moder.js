@@ -15,6 +15,9 @@ for (let t_id in themes) {
     let theme_container = document.createElement('div')
     theme_container.classList.add('container')
 
+    let theme_delete_card = document.createElement('div')
+    theme_delete_card.classList.add('delete-card')
+
     let theme_team = document.createElement('p')
     theme_team.textContent = themes[t_id].team
 
@@ -29,6 +32,7 @@ for (let t_id in themes) {
     arrow_span = document.createElement('span')
     arrow.appendChild(arrow_span)
 
+    theme_container.appendChild(theme_delete_card)
     theme_container.appendChild(theme_team)
     theme_container.appendChild(theme_title)
     theme_container.appendChild(arrow)
@@ -37,3 +41,14 @@ for (let t_id in themes) {
     
     theme_section.appendChild(theme_block)
 }
+
+let theme_add_card_block = document.createElement('div')
+theme_add_card_block.classList.add('card')
+theme_add_card_block.classList.add('add-card')
+let theme_add_card_block_div = document.createElement('div')
+let theme_add_card_block_div_span = document.createElement('span')
+
+theme_add_card_block_div.appendChild(theme_add_card_block_div_span)
+theme_add_card_block.appendChild(theme_add_card_block_div)
+
+theme_section.appendChild(theme_add_card_block)
