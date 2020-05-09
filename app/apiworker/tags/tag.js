@@ -34,7 +34,6 @@ class TagList {
             }
         } catch(err) {
             tag_list.err = err
-            return tag_list
         }
         
         return tag_list
