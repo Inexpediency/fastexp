@@ -21,8 +21,14 @@ btn.onclick = () => {
     try {
       let v = await fetch("http://localhost:8080/sessions", requestOptions)
       if (v.ok) {
+<<<<<<< HEAD
         
       }
+=======
+        let cookie = ok.headers.keys()
+          window.location = "themes.html"
+        }
+>>>>>>> e9ab53a15a15f63da440a26e61dc66a8f8f15f2b
     } catch (err) {
       console.log(err)
     }
