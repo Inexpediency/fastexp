@@ -1,6 +1,6 @@
-const server_url = require("../server_url");
+import server_url from "../server_url";
 
-class TagList {
+export class TagList {
   static get_command_tags_url = "/private/get_command_tags";
   static get_user_tags_url = "/private/get_user_tags";
   static set_user_tags_url = "/private/set_user_tags";
@@ -108,5 +108,3 @@ class TagList {
     return isOk;
   }
 }
-
-module.exports = TagList;

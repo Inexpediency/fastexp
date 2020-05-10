@@ -1,6 +1,6 @@
-const server_url = require('../server_url')
+import { server_url } from "../server_url";
 
-class User {
+export class User {
     static whoami_url = '/private/whoami'
 
     static async whoami() {
@@ -32,5 +32,3 @@ class User {
         return user
     }
 }
-
-module.exports = User;
