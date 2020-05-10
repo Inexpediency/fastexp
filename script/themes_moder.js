@@ -81,14 +81,16 @@ for (let t_id in themes) {
     theme_block.addEventListener('click', () => {
         window.location = 'http://localhost:8080/';
     })
+}
 
 let theme_add_card_block = document.createElement("div");
 theme_add_card_block.classList.add("card");
 theme_add_card_block.classList.add("add-card");
+
 let theme_add_card_block_div = document.createElement("div");
 let theme_add_card_block_div_span = document.createElement("span");
 
 theme_add_card_block_div.appendChild(theme_add_card_block_div_span);
 theme_add_card_block.appendChild(theme_add_card_block_div);
 
-theme_section.appendChild(theme_add_card_block);
+theme_section.appendChild(theme_add_card_block)

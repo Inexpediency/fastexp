@@ -38,44 +38,53 @@ class TagList {
 	static get_user_tags_url = "/private/get_user_tags";
 	static set_user_tags_url = "/private/set_user_tags";
   
-	static get_command_tags(command_id) {
-	  // let myHeaders = new Headers();
-	  // myHeaders.append("Content-Type", "application/json");
-  
-	  // let raw = JSON.stringify({
-	  //   command_id: command_id,
-	  // });
-  
-	  // let requestOptions = {
-	  //   method: "POST",
-	  //   headers: myHeaders,
-	  //   body: raw,
-	  // };
-  
-	  let tag_list = {
-		err: null,
-		tags: null,
-	  };
-  
-	  // try {
-	  //   let res = await fetch(
-	  //     server_url + TagList.get_command_tags_url,
-	  //     requestOptions
-	  //   );
-	  //   if (res.ok) {
-	  //     res = await res.json();
-	  //     tag_list.tags = res.tags;
-	  //   } else {
-	  //     tag_list.err = true;
-	  //   }
-	  // } catch (err) {
-	  //   tag_list.err = err;
-	  // }
-  
-	  tag_list = {
+	static async get_command_tags_(command_id) {
+		let myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+	
+		let raw = JSON.stringify({
+		  command_id: command_id,
+		});
+	
+		let requestOptions = {
+		  method: "POST",
+		  headers: myHeaders,
+		  body: raw,
+		};
+	
+		let tag_list = {
 		  err: null,
-		  tags: ['Docker', 'Go RabbitMq', 'uber-go', 'Aliases web-pack', 'babel', 'SOLID']
-	  }
+		  tags: null,
+		};
+	
+		try {
+		  let res = await fetch(
+			server_url + TagList.get_command_tags_url,
+			requestOptions
+		  );
+		  if (res.ok) {
+			res = await res.json();
+			tag_list.tags = res.tags;
+		  } else {
+			tag_list.err = true;
+		  }
+		} catch (err) {
+		  tag_list.err = err;
+		}
+	
+		tag_list = {
+			err: null,
+			tags: ['Docker', 'Go RabbitMq', 'uber-go', 'Aliases web-pack', 'babel', 'SOLID']
+		}
+	
+		return tag_list;
+	}
+
+	static get_command_tags(command_id) {	
+		let tag_list = {
+			err: null,
+			tags: ['Docker', 'Go RabbitMq', 'uber-go', 'Aliases web-pack', 'babel', 'SOLID']
+		}
   
 	  return tag_list;
 	}
@@ -117,29 +126,29 @@ class TagList {
 	  return tag_list;
 	}
   
-	// static async set_user_tags(list_of_tags) {
-	//   let myHeaders = new Headers();
-	//   myHeaders.append("Content-Type", "application/json");
+	static async set_user_tags_(list_of_tags) {
+	  let myHeaders = new Headers();
+	  myHeaders.append("Content-Type", "application/json");
   
-	//   let raw = JSON.stringify({
-	// 	tag_list: list_of_tags,
-	//   });
+	  let raw = JSON.stringify({
+		tag_list: list_of_tags,
+	  });
   
-	//   let requestOptions = {
-	// 	method: "POST",
-	// 	headers: myHeaders,
-	// 	body: raw,
-	//   };
+	  let requestOptions = {
+		method: "POST",
+		headers: myHeaders,
+		body: raw,
+	  };
   
-	//   let isOk = true;
-	//   let res = await fetch(
-	// 	server_url + TagList.set_user_tags_url,
-	// 	requestOptions
-	//   );
-	//   if (!res.ok) isOk = false;
+	  let isOk = true;
+	  let res = await fetch(
+		server_url + TagList.set_user_tags_url,
+		requestOptions
+	  );
+	  if (!res.ok) isOk = false;
   
-	//   return isOk;
-	// }
+	  return isOk;
+	}
   }
 
 
@@ -159,13 +168,10 @@ class Tag {
 const get_user_tags_to_display = (ctasks, utasks) => {
 	let user_tags_display = []
 
-	console.log(ctasks, ctasks.length)
 	let founded = -1
 	for (let cid = 0; cid < ctasks.length; cid++) {
 		founded = -1
 		for (let uid in utasks) {
-			// console.log(uid, " ", cid)
-			// console.log(utasks[uid], " ", ctasks[cid])
 			if (utasks[uid] === ctasks[cid]) {
 				founded = uid
 			}
@@ -186,7 +192,6 @@ const update_user_tags = (alltags) => {
 			user_tags.push(alltags[t])
 		}
 	}
-	console.log(user_tags)
 	TagList.set_user_tags(user_tags)
 }
 
@@ -194,9 +199,6 @@ const run = async () => {
 	try {
 		let user = await User.whoami()
 		let command_tags = await TagList.get_command_tags(1)
-
-		console.log(user)
-		console.log(command_tags)
 		
 		user.tags = ['Docker', 'uber-go']
 		let tags_to_display = get_user_tags_to_display(command_tags.tags, user.tags)
@@ -206,9 +208,6 @@ const run = async () => {
 		
 		h1.textContent = "С возвращением, " + user.email;
 		
-		
-
-		console.log(tags_to_display)
 		for (let tg in tags_to_display) {
 			let new_tag = document.createElement('div')
 			new_tag.classList.add('tag')
@@ -249,13 +248,14 @@ const update = (alltags) => {
 	return user_tags
 }
 
+command_id = 1;
+
 const startingpage = (user_tags, user_email, tags_to_display) => {
 	let h1 = document.querySelector("h1");
 	let tags_container = document.querySelector(".tags");
 
 	h1.textContent = "С возвращением, " + user_email;
 
-	console.log(tags_to_display)
 	for (let tg in tags_to_display) {
 		let new_tag = document.createElement('div')
 		new_tag.classList.add('tag')
@@ -281,10 +281,7 @@ const startingpage = (user_tags, user_email, tags_to_display) => {
 }
 
 let user_tags = ['Docker', 'uber-go']
-let command_tags = TagList.get_command_tags(1).tags
+let command_tags = TagList.get_command_tags(command_id).tags
 let user_email = 'nullptr@test.go'
 let tags_to_display = get_user_tags_to_display(command_tags, user_tags)
 startingpage(user_tags, user_email, tags_to_display)
-
-
-

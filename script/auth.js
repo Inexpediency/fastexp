@@ -2,14 +2,17 @@ let email = document.querySelector("#email");
 let pass = document.querySelector("#pass");
 let btn = document.querySelector("#submit");
 
+const server_url = 'http://localhost:8080'
+const auth_url = '/users'
+
 btn.onclick = () => {
-  const regReq = async () => {
+  const authReq = async () => {
     let myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
     
     let raw = JSON.stringify({
-      'email': email.value,
-      'password': pass.value,
+		'email': email.value,
+		'password': pass.value,
     });
 
     let requestOptions = {
@@ -19,20 +22,15 @@ btn.onclick = () => {
     };
 
     try {
-      let v = await fetch("http://localhost:8080/sessions", requestOptions)
-      if (v.ok) {
-<<<<<<< HEAD
-        
-      }
-=======
-        let cookie = ok.headers.keys()
-          window.location = "themes.html"
-        }
->>>>>>> e9ab53a15a15f63da440a26e61dc66a8f8f15f2b
-    } catch (err) {
-      console.log(err)
+		let v = await fetch(server_url + auth_url, requestOptions)
+		if (v.ok) {
+			let cookie = ok.headers.keys()
+			window.location = "themes.html"
+			}
+	} catch (err) {
+		console.log(err)
     }
   }
 
-  regReq()
+  authReq()
 };

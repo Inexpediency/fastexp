@@ -10,6 +10,9 @@ auth.onclick = function () {
   window.location = "auth.html";
 };
 
+const server_url = 'http://localhost:8080'
+const users_url = '/users'
+
 btn.onclick = () => {
   if (pass.value === passAgain.value) {
     const regReq = async () => {
@@ -28,7 +31,7 @@ btn.onclick = () => {
       };
 
       try {
-        let v = await fetch("http://localhost:8080/users", requestOptions);
+        let v = await fetch(server_url + users_url, requestOptions);
         if (v.ok) {
           window.location = "themes.html";
         }
