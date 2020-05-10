@@ -254,6 +254,12 @@ const startingpage = (user_tags, user_email, tags_to_display) => {
 	let h1 = document.querySelector("h1");
 	let tags_container = document.querySelector(".tags");
 
+	let user_profile_container = document.getElementById('user_profile')
+	user_profile_container.textContent = user_email
+	let user_profile_container_hidden = document.getElementById('user_profile_hidden')
+	user_profile_container_hidden.textContent = user_email
+	
+
 	h1.textContent = "С возвращением, " + user_email;
 
 	for (let tg in tags_to_display) {

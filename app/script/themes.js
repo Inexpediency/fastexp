@@ -1,5 +1,12 @@
 const Theme = require('../apiworker/themes/theme')
 
+var elements = document.querySelectorAll(".arrow");
+for (var i = 0; i < elements.length; i++) {
+    elements[i].onclick = function(){
+        window.location = 'theme.html'
+    };
+}
+
 let themes;
 Theme.get_themes(1).then(t => {
     themes = t.themes

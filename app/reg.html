@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auth</title>
+    <title>Registration</title>
     <link rel="stylesheet" href="stylesheet/header.css" />
-    <link rel="stylesheet" href="stylesheet/auth.css" />
+    <link rel="stylesheet" href="stylesheet/reg.css" />
     <link rel="stylesheet" href="stylesheet/footer.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,500;0,700;0,900;1,500;1,700;1,900&display=swap"
@@ -22,30 +22,34 @@
       <main>
         <section>
           <div class="form">
-            <h1>Авторизация</h1>
+            <h1>Регистрация</h1>
+            <label for="firstname">Имя</label>
+            <input type="text" id="firstname" />
+            <label for="lastname">Фамилия</label>
+            <input type="text" id="lastname" />
             <label for="email">Электронная почта</label>
             <input type="text" id="email" />
             <label for="pass">Пароль</label>
             <input type="password" id="pass" />
-            <button id="submit">Авторизация</button>
+            <label for="pass-again">Повторите пароль</label>
+            <input type="password" id="pass-again" />
+            <div class="buttons">
+              <button id="submit">Вступить</button>
+              <button id="auth">Авторизация</button>
+            </div>
           </div>
-          <div class="dividing">
-            <div class="left"></div>
-            <p>Еще нет аккаунта в FastExp?</p>
-            <div class="right"></div>
-          </div>
-          <button class="reg">Создать аккаунт на FastExp</button>
         </section>
       </main>
     </div>
     <footer>
       <div>
         <img src="image/Logo.svg" alt="logo" class="logofooter" />
+        <p>Design By Eliza Kireeva</p> 
         <p>nCoV-Team</p>
         <p>FastExp Project</p>
       </div>
     </footer>
-    <script src="script/auth.js"></script>
+    <script src="script/reg.js"></script>
     <script src="script/headerfooter.js"></script>
   </body>
 </html>
