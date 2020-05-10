@@ -133,7 +133,7 @@ class TagList {
   
 	  let isOk = true;
 	  let res = await fetch(
-		server_url + this.set_person_tags_url,
+		server_url + TagList.set_user_tags_url,
 		requestOptions
 	  );
 	  if (!res.ok) isOk = false;
