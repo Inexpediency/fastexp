@@ -6,37 +6,42 @@ class TagList {
   static set_user_tags_url = "/private/set_user_tags";
 
   static async get_command_tags(command_id) {
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    // let myHeaders = new Headers();
+    // myHeaders.append("Content-Type", "application/json");
 
-    let raw = JSON.stringify({
-      command_id: command_id,
-    });
+    // let raw = JSON.stringify({
+    //   command_id: command_id,
+    // });
 
-    let requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-    };
+    // let requestOptions = {
+    //   method: "POST",
+    //   headers: myHeaders,
+    //   body: raw,
+    // };
 
     let tag_list = {
       err: null,
       tags: null,
     };
 
-    try {
-      let res = await fetch(
-        server_url + TagList.get_command_tags_url,
-        requestOptions
-      );
-      if (res.ok) {
-        res = await res.json();
-        tag_list.tags = res.tags;
-      } else {
-        tag_list.err = true;
-      }
-    } catch (err) {
-      tag_list.err = err;
+    // try {
+    //   let res = await fetch(
+    //     server_url + TagList.get_command_tags_url,
+    //     requestOptions
+    //   );
+    //   if (res.ok) {
+    //     res = await res.json();
+    //     tag_list.tags = res.tags;
+    //   } else {
+    //     tag_list.err = true;
+    //   }
+    // } catch (err) {
+    //   tag_list.err = err;
+    // }
+
+    tag_list = {
+        err: null,
+        tags: ['Docker', 'Go RabbitMq', 'uber-go', 'Aliases web-pack', 'babel', 'SOLID']
     }
 
     return tag_list;

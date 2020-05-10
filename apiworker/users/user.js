@@ -12,6 +12,7 @@ class User {
             err: null,
             id: null,
             email: null,
+            tags: null,
         }
 
         try {
@@ -20,6 +21,7 @@ class User {
                 res = await res.json()
                 user.id = res.id
                 user.email = res.email
+                user.tags = res.tags
             } else {
                 user.err = true
             }
