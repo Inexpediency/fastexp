@@ -38,7 +38,7 @@ class TagList {
 	static get_user_tags_url = "/private/get_user_tags";
 	static set_user_tags_url = "/private/set_user_tags";
   
-	static async get_command_tags(command_id) {
+	static get_command_tags(command_id) {
 	  // let myHeaders = new Headers();
 	  // myHeaders.append("Content-Type", "application/json");
   
@@ -117,29 +117,29 @@ class TagList {
 	  return tag_list;
 	}
   
-	static async set_user_tags(list_of_tags) {
-	  let myHeaders = new Headers();
-	  myHeaders.append("Content-Type", "application/json");
+	// static async set_user_tags(list_of_tags) {
+	//   let myHeaders = new Headers();
+	//   myHeaders.append("Content-Type", "application/json");
   
-	  let raw = JSON.stringify({
-		tag_list: list_of_tags,
-	  });
+	//   let raw = JSON.stringify({
+	// 	tag_list: list_of_tags,
+	//   });
   
-	  let requestOptions = {
-		method: "POST",
-		headers: myHeaders,
-		body: raw,
-	  };
+	//   let requestOptions = {
+	// 	method: "POST",
+	// 	headers: myHeaders,
+	// 	body: raw,
+	//   };
   
-	  let isOk = true;
-	  let res = await fetch(
-		server_url + TagList.set_user_tags_url,
-		requestOptions
-	  );
-	  if (!res.ok) isOk = false;
+	//   let isOk = true;
+	//   let res = await fetch(
+	// 	server_url + TagList.set_user_tags_url,
+	// 	requestOptions
+	//   );
+	//   if (!res.ok) isOk = false;
   
-	  return isOk;
-	}
+	//   return isOk;
+	// }
   }
 
 
@@ -236,4 +236,53 @@ const run = async () => {
 	}
 }
 
-run()
+const update = (alltags) => {
+	let user_tags = []
+	for (let t in alltags) {
+		if (alltags[t].is_pinned) {
+			user_tags.push(alltags[t])
+		}
+	}
+
+	return user_tags
+}
+
+const startingpage = (user_tags, user_email, tags_to_display) => {
+	let h1 = document.querySelector("h1");
+	let tags_container = document.querySelector(".tags");
+
+	h1.textContent = "С возвращением, " + user_email;
+
+	console.log(tags_to_display)
+	for (let tg in tags_to_display) {
+		let new_tag = document.createElement('div')
+		new_tag.classList.add('tag')
+
+		let new_tag_paragraph = document.createElement('p')
+		new_tag_paragraph.textContent = tags_to_display[tg].text
+		new_tag.appendChild(new_tag_paragraph)
+
+		new_tag.addEventListener('click', () => {
+			tags_to_display[tg].is_pinned = !tags_to_display[tg].is_pinned
+			tags_container.innerHTML = ""
+			user_tags = update(tags_to_display)
+			setTimeout(() => {  startingpage(user_tags, user_email, tags_to_display) }, 50);
+		})
+
+		if (tags_to_display[tg].is_pinned) {
+			let img = document.createElement('img');
+			img.setAttribute('src', 'image/profile.jpg');
+			new_tag.appendChild(img);
+		}
+		tags_container.appendChild(new_tag)
+	}
+}
+
+let user_tags = ['Docker', 'uber-go']
+let command_tags = TagList.get_command_tags(1).tags
+let user_email = 'nullptr@test.go'
+let tags_to_display = get_user_tags_to_display(command_tags, user_tags)
+startingpage(user_tags, user_email, tags_to_display)
+
+
+
