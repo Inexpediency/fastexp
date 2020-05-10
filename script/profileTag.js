@@ -16,7 +16,7 @@ class User {
         }
 
         try {
-            let res = await fetch(server_url + User.whoami, requestOptions)
+            let res = await fetch(server_url + User.whoami_url, requestOptions)
             if (res.ok) {
                 res = await res.json()
                 user.id = res.id
@@ -179,17 +179,26 @@ const get_user_tags_to_display = (ctasks, utasks) => {
 	return user_tags_display
 }
 
-
+const update_user_tags = (alltags) => {
+	let user_tags = []
+	for (let t in alltags) {
+		if (alltags[t].is_pinned) {
+			user_tags.push(alltags[t])
+		}
+	}
+	console.log(user_tags)
+	TagList.set_user_tags(user_tags)
+}
 
 const run = async () => {
-	// try {
+	try {
 		let user = await User.whoami()
 		let command_tags = await TagList.get_command_tags(1)
 
 		console.log(user)
 		console.log(command_tags)
 		
-		// user.tags = ['Docker', 'uber-go']
+		user.tags = ['Docker', 'uber-go']
 		let tags_to_display = get_user_tags_to_display(command_tags.tags, user.tags)
 	
 		let h1 = document.querySelector("h1");
@@ -202,6 +211,14 @@ const run = async () => {
 			let new_tag = document.createElement('div')
 			new_tag.classList.add('tag')
 			new_tag.textContent = tags_to_display[tg].text
+
+			new_tag.addEventListener('click', () => {
+				tags_to_display[tg].is_pinned = !tags_to_display[tg].is_pinned
+				tags_container.innerHTML = ""
+				update_user_tags(tags_to_display)
+				run()
+			})
+
 			if (tags_to_display[tg].is_pinned) {
 				let img = document.createElement('img');
 				img.setAttribute('src', 'image/profile.jpg');
@@ -210,10 +227,10 @@ const run = async () => {
 			tags_container.appendChild(new_tag)
 		}
 
-	// } catch(err) {
-	// 	console.log(err)
-	// 	window.location = "auth.html"
-	// }
+	} catch(err) {
+		console.log(err)
+		window.location = "auth.html"	
+	}
 }
 
 run()
