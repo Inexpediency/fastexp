@@ -268,12 +268,12 @@ const startingpage = (user_tags, user_email, tags_to_display) => {
 			tags_to_display[tg].is_pinned = !tags_to_display[tg].is_pinned
 			tags_container.innerHTML = ""
 			user_tags = update(tags_to_display)
-			setTimeout(() => {  startingpage(user_tags, user_email, tags_to_display) }, 50);
+			startingpage(user_tags, user_email, tags_to_display)
 		})
 
 		if (tags_to_display[tg].is_pinned) {
 			let img = document.createElement('img');
-			img.setAttribute('src', 'image/profile.jpg');
+			img.setAttribute('src', 'image/checkbox.svg');
 			new_tag.appendChild(img);
 		}
 		tags_container.appendChild(new_tag)
