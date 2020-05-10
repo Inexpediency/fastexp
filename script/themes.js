@@ -15,7 +15,7 @@ for (let t_id in themes) {
     let theme_container = document.createElement('div')
     theme_container.classList.add('container')
 
-    let theme_team = document.createElement('p')
+    let theme_team = document.createElement('p')            
     theme_team.textContent = themes[t_id].team
 
     let theme_title = document.createElement('h2')
