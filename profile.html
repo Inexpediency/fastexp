@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Profile FastExp</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reg FastExp</title>
@@ -21,9 +21,16 @@
           <img src="image/Logo.svg" alt="logo" />
         </div>
         <div class="profile">
-          <img src="image/profile.jpg" alt="avatar" />
-          <p class="name">Вадим Сабиров</p>
-          <p>Logout</p>
+          <img src="image/profile.jpg" alt="avatar" class="first"/>
+          <img src="image/profile.jpg" alt="avatar" class="second"/>
+          <div class="retractable hidden">
+            <p class="name">Вадим Сабиров</p>
+            <p class="logout">Logout</p>
+          </div>
+          <div class="default">
+            <p class="name">Вадим Сабиров</p>
+            <p class="logout">Logout</p>
+          </div>
         </div>
       </header>
       <main>
@@ -42,5 +49,6 @@
         </section>
       </main>
     </div>
+    <script src="script/header.js"></script>
   </body>
 </html>
