@@ -210,7 +210,10 @@ const run = async () => {
 		for (let tg in tags_to_display) {
 			let new_tag = document.createElement('div')
 			new_tag.classList.add('tag')
-			new_tag.textContent = tags_to_display[tg].text
+
+			let new_tag_paragraph = document.createElement('p')
+			new_tag_paragraph.textContent = tags_to_display[tg].text
+			new_tag.appendChild(new_tag_paragraph)
 
 			new_tag.addEventListener('click', () => {
 				tags_to_display[tg].is_pinned = !tags_to_display[tg].is_pinned
