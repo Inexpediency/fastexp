@@ -5,7 +5,6 @@ let pass = document.querySelector("#pass");
 let passAgain = document.querySelector("#pass-again");
 let btn = document.querySelector("#submit");
 let auth = document.querySelector("#auth");
-let form = document.querySelector('form')
 
 
 
@@ -16,7 +15,7 @@ auth.onclick = function() {
 btn.onclick = () => {
   if (pass.value === passAgain.value) {
     let regRequest = new Promise((resolve, reject) => {
-      fetch("localhost:8080/users", {
+      fetch("http://localhost:8080/users", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body:
@@ -27,7 +26,20 @@ btn.onclick = () => {
     regRequest.then((value) => {
       if (status === 200) {
         let authRequest = new Promise((resolve, reject) => {
-          fetch("localhost:8080/sessions", {
+          fetch("http://localhost:8080/sessions", {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body:
+              '{"email": "' + email.value + '", "password": "' + pass.value + '"}',
+          }).then((data) => resolve(data.json()));
+        });
+        authRequest.then((value) => {
+          if (status === 200) {
+            window.location = "themes.html";
+          }
+        });
+        let authRequest = new Promise((resolve, reject) => {
+          fetch("http://localhost:8080/sessions", {
             method: "POST",
             headers: { "Content-type": "application/json" },
             body:

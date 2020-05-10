@@ -4,14 +4,14 @@ let btn = document.querySelector("#submit");
 
 btn.onclick = () => {
   let authRequest = new Promise((resolve, reject) => {
-    fetch("localhost:8080/sessions", {
+    fetch("http://localhost:8080/sessions", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body:
         '{"email": "' + email.value + '", "password": "' + pass.value + '"}',
     }).then((data) => resolve(data.json()));
   });
-  authRequest.then(() => {
+  authRequest.then((value) => {
     if (status === 200) {
       window.location = "themes.html";
     }
