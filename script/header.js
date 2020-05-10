@@ -13,8 +13,8 @@ def.children[0].onclick = () => {
 };
 
 block.children[0].onclick = () => {
-    window.location = "profile.html";
-  };
+  window.location = "profile.html";
+};
 
 img.onclick = () => {
   block.classList.toggle("hidden");
@@ -25,5 +25,5 @@ def.children[1].onclick = () => {
 };
 
 block.children[1].onclick = () => {
-    window.location = "auth.html";
-  };
+  window.location = "auth.html";
+};

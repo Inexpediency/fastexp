@@ -18,19 +18,6 @@
   position: relative;
 }
 
-
-
-  /* .cards .card:first-child,
-  .cards .card:nth-child(2n + 1) {
-    margin-left: 0;
-  }
-
-  .cards .card:nth-child(2n) {
-    margin-right: 0;
-  } */
-}
-
-
 .card div + p {
   color: #9c9ba4;
 }
@@ -186,9 +173,9 @@
     width: 30%;
   }
 
-.delete-card {
-  left: 93%;
-}
+  .delete-card {
+    left: 93%;
+  }
 
   .cards .card:first-child,
   .cards .card:nth-child(3n + 1) {
@@ -212,7 +199,7 @@
   }
 
   .cards .card:first-child,
-  .cards .card:nth-child(2n+1) {
+  .cards .card:nth-child(2n + 1) {
     margin-left: 0;
   }
 
