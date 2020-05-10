@@ -6,52 +6,37 @@ let passAgain = document.querySelector("#pass-again");
 let btn = document.querySelector("#submit");
 let auth = document.querySelector("#auth");
 
-
-
-auth.onclick = function() {
+auth.onclick = function () {
   window.location = "auth.html";
 };
 
 btn.onclick = () => {
   if (pass.value === passAgain.value) {
-    let regRequest = new Promise((resolve, reject) => {
-      fetch("http://localhost:8080/users", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body:
-          '{"email": "' + email.value + '", "password": "' + pass.value + '"}',
-      }).then((data) => resolve(data.json()));
-    });
+    const regReq = async () => {
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
 
-    regRequest.then((value) => {
-      if (status === 200) {
-        let authRequest = new Promise((resolve, reject) => {
-          fetch("http://localhost:8080/sessions", {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body:
-              '{"email": "' + email.value + '", "password": "' + pass.value + '"}',
-          }).then((data) => resolve(data.json()));
-        });
-        authRequest.then((value) => {
-          if (status === 200) {
-            window.location = "themes.html";
-          }
-        });
-        let authRequest = new Promise((resolve, reject) => {
-          fetch("http://localhost:8080/sessions", {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body:
-              '{"email": "' +
-              email.value +
-              '", "password": "' +
-              pass.value +
-              '"}',
-          }).then((data) => resolve(data.json()));
-        });
-        authRequest.then(() => (window.location = "themes.html"));
+      let raw = JSON.stringify({
+        email: email.value,
+        password: pass.value,
+      });
+
+      let requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+      };
+
+      try {
+        let v = await fetch("http://localhost:8080/users", requestOptions);
+        if (v.ok) {
+          window.location = "themes.html";
+        }
+      } catch (err) {
+        console.log(err);
       }
-    });
+    };
+
+    regReq();
   }
 };
