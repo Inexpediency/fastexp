@@ -21,7 +21,7 @@ btn.onclick = () => {
     try {
       let v = await fetch("http://localhost:8080/sessions", requestOptions)
       if (v.ok) {
-        window.location = "themes.html"
+        
       }
     } catch (err) {
       console.log(err)

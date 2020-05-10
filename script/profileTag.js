@@ -206,6 +206,8 @@ const run = async () => {
 		
 		h1.textContent = "С возвращением, " + user.email;
 		
+		
+
 		console.log(tags_to_display)
 		for (let tg in tags_to_display) {
 			let new_tag = document.createElement('div')

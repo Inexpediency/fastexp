@@ -1,0 +1,22 @@
+
+footer div {
+    display: flex;
+    flex-direction: column;
+}
+
+footer img{
+    width: 140px;
+    height: 140px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+footer p {
+    font-size: 15px;
+    color: #949494;
+    margin: 5px 0;
+}
+
+footer p:last-child {
+    margin-bottom: 30px;
+}
