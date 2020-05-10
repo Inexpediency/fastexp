@@ -3,8 +3,13 @@ let block = document.querySelector(".retractable");
 let def = document.querySelector(".default");
 let profile = document.querySelector(".name");
 let logo = document.querySelector(".logo");
+let logofooter = document.querySelector(".logofooter");
 
 logo.onclick = () => {
+  window.location = "themes.html";
+};
+
+logofooter.onclick = () => {
   window.location = "themes.html";
 };
 
