@@ -1,4 +1,4 @@
-const server_url = require('../server_url')
+import server_url from '../server_url';
 
 class Theme {
     static get_themes_url = '/private/get_themes'
@@ -38,4 +38,4 @@ class Theme {
     }
 }
 
-module.exports = Theme;
+export default Theme;
