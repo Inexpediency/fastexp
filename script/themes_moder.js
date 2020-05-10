@@ -76,15 +76,7 @@ for (let t_id in themes) {
 
 	theme_block.appendChild(theme_container);
 
-<<<<<<< HEAD
-  theme_section.appendChild(theme_block);
-
-  theme_block.addEventListener('click', () => {
-      window.location = 'http://localhost:8080/';
-  })
-=======
 	theme_section.appendChild(theme_block);
->>>>>>> e9ab53a15a15f63da440a26e61dc66a8f8f15f2b
 }
 
 let theme_add_card_block = document.createElement("div");

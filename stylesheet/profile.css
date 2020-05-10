@@ -21,13 +21,14 @@ section .tags {
 
 h1 {
   text-align: center;
+  color: rgb(70, 69, 69);
 }
 
 .dividing {
   width: 40%;
   height: 5px;
   margin: 50px auto;
-  background-color: black;
+  background-color: rgb(70, 69, 69);
   border-radius: 10px;
 }
 
